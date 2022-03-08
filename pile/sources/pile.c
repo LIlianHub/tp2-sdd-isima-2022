@@ -1,6 +1,7 @@
 #include "../headers/pile.h"
 #include <stdio.h>
 #include <stdlib.h>
+//include le file.c de lilian
 
 int initPile(pile_t ** newPile, int size){
   int sortie = 1;
@@ -79,7 +80,7 @@ void affichPile(pile_t * pile){
   }
 }
 
-int inversPile(pile_t pile){
+int inversPile(pile_t * pile){
   int sortie = 1;
   //principe du programme ?
   //tant que !estVidePile faire
@@ -88,6 +89,19 @@ int inversPile(pile_t pile){
   //ftq
   //empiler la tete de la file
   //defiler
+
+  //initialiser une file de la taille de la pile
+  while( !estVidePile(pile) ){
+
+    //enfiler(la tete de la pile);
+    depiler(pile);
+  }
+  
+  //while(/*!estVideFile(file)*/){
+
+    //empiler(la tete de la file);
+    //defiler;
+  //}  
   return sortie;
 }
 

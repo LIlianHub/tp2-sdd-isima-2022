@@ -79,6 +79,18 @@ void affichPile(pile_t * pile){
   }
 }
 
+int inversPile(pile_t pile){
+  int sortie = 1;
+  //principe du programme ?
+  //tant que !estVidePile faire
+  // enfiler la tete de la pile
+  // depiler
+  //ftq
+  //empiler la tete de la file
+  //defiler
+  return sortie;
+}
+
 int main(){
   int size = 4;
   pile_t * maPile=NULL;
