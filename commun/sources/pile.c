@@ -4,13 +4,13 @@
 #include <stdlib.h>
 //include le file.c de lilian
 
-int initPile(pile_t ** newPile, int size){
+int InitPile(pile_t ** newPile, int size){
   int sortie = 1;
   *newPile = (pile_t*)malloc(sizeof(pile_t));
   if(newPile){
-    (*newPile)->tab = (char*)malloc(size*sizeof(char));
-    if((*newPile)->tab){
-      (*newPile)->nbelement = 0;
+    (*newPile)->base = (char*)malloc(size*sizeof(char));
+    if((*newPile)->base){
+      (*newPile)->nb_element = 0;
       (*newPile)->taille = size;
     }
     else{
@@ -25,85 +25,76 @@ int initPile(pile_t ** newPile, int size){
  }
 
 
-void libererPile(pile_t * pile){
-  free(pile->tab);
+void LibererPile(pile_t * pile){
+  free(pile->base);
   free(pile);
 }
 
-int estVidePile(pile_t * pile){
-  int sortie = 1;
-  if(pile->nbelement > 0){
-    sortie = 0;
+int PileVide(pile_t * pile){
+  return (pile->nb_element == 0);
+}
+
+int PilePleine(pile_t * pile){
+  return (pile->nb_element == pile->taille);
+}
+
+int Empiler(pile_t * pile, char ajout){
+  int sortie = 0;
+  if(!PilePleine(pile)){
+    
+    pile->base[pile->nb_element]=ajout;
+    pile->nb_element++;
+    
+    sortie = 1;
   }
   return sortie;
 }
 
-int estPleinePile(pile_t * pile){
+int Depiler(pile_t * pile, char * element){
   int sortie = 0;
-  if(pile->nbelement >= pile->taille){
+  if(!PileVide(pile)){
+    *element = pile->base[pile->nb_element];
+    pile->nb_element --;
     sortie = 1;
   }
   return sortie;
 }
 
-int empiler(pile_t * pile, char ajout){
-  int sortie = 0;
-  if( !estPleinePile(pile) ){
-    
-    pile->tab[pile->nbelement]=ajout;
-    pile->nbelement++;
-    
-    sortie = 1;
-    
-  }
-  return sortie;
-}
-
-int depiler(pile_t * pile, char * element){
-  int sortie = 0;
-  if( !estVidePile(pile) ){
-    *element = pile->tab[pile->nbelement];
-    pile->nbelement --;
-    sortie = 1;
-  }
-  return sortie;
-}
-
-void affichPile(pile_t * pile){
+void AffichePile(pile_t * pile){
   int i;
-  if(estVidePile(pile)){
+  if(PileVide(pile)){
     printf("La pile est vide\n");
   }
   else{
-    for(i=0; i<=pile->nbelement; i++){
-      printf("%c ",pile->tab[i-1]);
+    for(i = (pile->nb_element) - 1; i >=0 ; i--){
+      printf("| %c |\n",pile->base[i]);
     }
     printf("\n");
   }
 }
 
-void inversPile(pile_t * pile){
+void InversePile(pile_t * pile){
   char outil;
 
   file_t * file = NULL;
   InitFile(&file, pile->taille);
 
-  affichPile(pile);
+  AffichePile(pile);
 
-  while(!estVidePile(pile)){
-    depiler(pile, &outil);
+  while(!PileVide(pile)){
+    Depiler(pile, &outil);
     Enfiler(file,outil);
   }
 
-  affichPile(pile);
+  AffichePile(pile);
   AfficheFile(file);
 
   while(!FileVide(file)){
     Defiler(file, &outil);
-    empiler(pile, outil);
+    Empiler(pile, outil);
   }
 
-  affichPile(pile);
+  AffichePile(pile);
   AfficheFile(file);
 
   LibererFile(file);

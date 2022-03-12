@@ -6,15 +6,15 @@
 int main(){
   int size = 8;
   pile_t * maPile = NULL;
-  initPile(&maPile,size);
+  InitPile(&maPile,size);
 
-  empiler(maPile,'a');
-  empiler(maPile,'b');
-  empiler(maPile,'c');
-  empiler(maPile,'d');
+  Empiler(maPile,'a');
+  Empiler(maPile,'b');
+  Empiler(maPile,'c');
+  Empiler(maPile,'d');
 
-  inversPile(maPile);
+  InversePile(maPile);
   
-  libererPile(maPile);
+  LibererPile(maPile);
   return 0;
 }
