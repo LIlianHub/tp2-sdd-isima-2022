@@ -42,7 +42,7 @@ int Empiler(pile_t * pile, char ajout){
   int sortie = 0;
   if(!PilePleine(pile)){
     
-    pile->base[pile->nb_element]=ajout;
+    pile->base[pile->nb_element] = ajout;
     pile->nb_element++;
     
     sortie = 1;
@@ -53,8 +53,8 @@ int Empiler(pile_t * pile, char ajout){
 int Depiler(pile_t * pile, char * element){
   int sortie = 0;
   if(!PileVide(pile)){
-    *element = pile->base[pile->nb_element];
     pile->nb_element --;
+    *element = pile->base[pile->nb_element];
     sortie = 1;
   }
   return sortie;
