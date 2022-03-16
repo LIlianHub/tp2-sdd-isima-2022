@@ -69,7 +69,7 @@ void AffichePile(pile_t * pile){
     for(i = (pile->nb_element) - 1; i >=0 ; i--){
       printf("| %c |\n",pile->base[i]);
     }
-    printf("\n");
+    printf("-----\n");
   }
 }
 
