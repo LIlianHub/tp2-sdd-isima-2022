@@ -50,13 +50,19 @@ int Enfiler(file_t * maFile, char ajout){
 
 void AfficheFile(file_t * aAfficher){
     if(!FileVide(aAfficher)){
-        for(int i =0; i < ((aAfficher->taille + 1) * 4); i++)
+        for(int i = 0; i < ((aAfficher->taille + 1) * 4); i++)
             printf("-");
         printf("\n--> ");
-        
-        for(int i = (aAfficher->deb + aAfficher->nb_element) % aAfficher->taille; i != aAfficher->deb; i = (i - 1) % aAfficher->taille){
-            printf("%c | ", aAfficher->base[i]);
+
+        int cur = (aAfficher->deb + aAfficher->nb_element - 1) % aAfficher->taille;
+        while(cur != aAfficher->deb){
+            printf("%c | ", aAfficher->base[cur]);
+            if(cur == 0)
+                cur = aAfficher->taille - 1;
+            else
+                cur--;
         }
+
         printf("%c",aAfficher->base[aAfficher->deb]);
         printf("\n");
         for(int i =0; i < ((aAfficher->taille + 1) * 4); i++)

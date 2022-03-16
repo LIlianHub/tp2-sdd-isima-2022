@@ -18,5 +18,4 @@ int Enfiler(file_t * maFile, char ajout);
 int Defiler(file_t * maFile, char * element);
 void AfficheFile(file_t * aAfficher);
 
-
 #endif

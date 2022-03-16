@@ -12,6 +12,11 @@ int main(){
   Empiler(maPile,'b');
   Empiler(maPile,'c');
   Empiler(maPile,'d');
+  Empiler(maPile,'e');
+  Empiler(maPile,'f');
+  Empiler(maPile,'g');
+  Empiler(maPile,'h');
+  Empiler(maPile,'i');
 
   InversePile(maPile);
   
