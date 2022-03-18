@@ -1,12 +1,17 @@
 #ifndef PILE_H
 #define PILE_H
 
+/*type de la pile*/
+typedef char empilable_t;
+
 /*Structure*/
 typedef struct pile{
   int taille;
   int nb_element;
-  char * base;  
+  empilable_t * base;  
 } pile_t;
+
+
 
 /*Fonction*/
 int InitPile(pile_t ** newPile, int taille) ;

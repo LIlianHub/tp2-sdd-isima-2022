@@ -2,13 +2,13 @@
 #include "../headers/file.h"
 #include <stdio.h>
 #include <stdlib.h>
-//include le file.c de lilian
+
 
 int InitPile(pile_t ** newPile, int size){
   int sortie = 1;
   *newPile = (pile_t*)malloc(sizeof(pile_t));
   if(newPile){
-    (*newPile)->base = (char*)malloc(size*sizeof(char));
+    (*newPile)->base = (empilable_t*)malloc(size*sizeof(empilable_t));
     if((*newPile)->base){
       (*newPile)->nb_element = 0;
       (*newPile)->taille = size;
