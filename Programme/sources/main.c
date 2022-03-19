@@ -8,6 +8,8 @@ int main(){
   pile_t * maPile = NULL;
   InitPile(&maPile,size);
 
+  AffichePile(maPile);
+
   Empiler(maPile,'a');
   Empiler(maPile,'b');
   Empiler(maPile,'c');
@@ -18,7 +20,11 @@ int main(){
   Empiler(maPile,'h');
   Empiler(maPile,'i');
 
+  AffichePile(maPile);
+
   InversePile(maPile);
+
+  AffichePile(maPile);
   
   LibererPile(maPile);
   return 0;

@@ -18,8 +18,8 @@ int InitPile(pile_t ** newPile, int taille) ;
 void LibererPile(pile_t * pile);
 int PileVide(pile_t * pile);
 int PilePleine(pile_t *pile);
-int Empiler(pile_t * pile, char ajout);
-int Depiler(pile_t * pile, char * element);
+int Empiler(pile_t * pile, empilable_t ajout);
+int Depiler(pile_t * pile, empilable_t * element);
 void AffichePile(pile_t * pile);
 void InversePile(pile_t * pile);
 

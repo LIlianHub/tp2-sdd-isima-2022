@@ -38,7 +38,7 @@ int PilePleine(pile_t * pile){
   return (pile->nb_element == pile->taille);
 }
 
-int Empiler(pile_t * pile, char ajout){
+int Empiler(pile_t * pile, empilable_t ajout){
   int sortie = 0;
   if(!PilePleine(pile)){
     
@@ -50,7 +50,7 @@ int Empiler(pile_t * pile, char ajout){
   return sortie;
 }
 
-int Depiler(pile_t * pile, char * element){
+int Depiler(pile_t * pile, empilable_t * element){
   int sortie = 0;
   if(!PileVide(pile)){
     pile->nb_element --;
@@ -74,28 +74,20 @@ void AffichePile(pile_t * pile){
 }
 
 void InversePile(pile_t * pile){
-  char outil;
+  empilable_t outil;
 
   file_t * file = NULL;
   InitFile(&file, pile->taille);
-
-  AffichePile(pile);
 
   while(!PileVide(pile)){
     Depiler(pile, &outil);
     Enfiler(file,outil);
   }
 
-  AffichePile(pile);
-  AfficheFile(file);
-
   while(!FileVide(file)){
     Defiler(file, &outil);
     Empiler(pile, outil);
   }
-
-  AffichePile(pile);
-  AfficheFile(file);
 
   LibererFile(file);
 }
